@@ -1,0 +1,24 @@
+@()
+
+@main("Add entry") {
+    <div class="container">
+        <h2>Add entry</h2>
+        <form method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input name="title" id="add-title" type="text" />
+                    <label for="add-title">Title</label>
+                </div>
+                <div class="input-field col s12">
+                    <textarea name="text" id="add-text" class="materialize-textarea"></textarea>
+                    <label for="add-text">Entry text</label>
+                </div>
+                <div class="col s12">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+}

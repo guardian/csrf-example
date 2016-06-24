@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.page-footer {
+    border-top: solid 10px #80cbc4;
+}
+
+a {
+    color: #00695c;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #004d40;
+}
+
+#index-banner {
+    border-bottom: solid 3px #004d40;
+}
+
+.thoughts__toggle {
+    padding: 10px;
+    border: solid 1px #00695c;
+    cursor: pointer;
+}
+
+.thoughts__body {
+    padding: 5px 15px;
+}

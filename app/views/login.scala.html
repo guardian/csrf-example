@@ -1,0 +1,27 @@
+@(message: Option[String])
+
+@main("Add entry") {
+    <div class="container">
+        <h2>Log in</h2>
+        @message.map { messageText =>
+            <p>@messageText</p>
+        }
+        <form method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input name="username" id="add-username" type="text" />
+                    <label for="add-username">Username</label>
+                </div>
+                <div class="input-field col s12">
+                    <input name="password" id="add-password" type="password" />
+                    <label for="add-text">Password</label>
+                </div>
+                <div class="col s12">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Log in
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+}

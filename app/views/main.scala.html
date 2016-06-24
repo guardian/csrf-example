@@ -1,0 +1,59 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("materialize/css/materialize.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <header class="section teal lighten-3" id="index-banner">
+            <div class="container">
+                <h1 class="header center-on-small-only">CSRF demo</h1>
+                <div class="row">
+                    <div class="col s12 m9">
+                        <h4 class="light teal-text text-darken-3 center-on-small-only">Practice exploiting Cross-Site Request Forgery vulnerabilities.</h4>
+                    </div>
+                    <div class="col s12 m3">
+                        <ul>
+                            <li><a href="/">Instructions</a></li>
+                            <li><a href="/list">Show entries</a></li>
+                            <li><a href="/add">Add entry</a></li>
+                            <li class="teal-text"><a href="/login">Login</a> | <a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            @content
+        </main>
+
+        <footer class="page-footer grey darken-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col l8 s12">
+                        <h5 class="white-text">CSRF demo application</h5>
+                        <p class="grey-text text-lighten-4">
+                            This application has been built by the Guardian to teach developers about the perils of
+                            Cross-Site Request Forgery attacks.
+                        </p>
+                    </div>
+                    <div class="col l3 offset-l1 s12">
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="@routes.Assets.versioned("javascripts/jquery-3.0.0.min.js")"></script>
+        <script src="@routes.Assets.versioned("materialize/js/materialize.min.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/app.js")"></script>
+    </body>
+</html>

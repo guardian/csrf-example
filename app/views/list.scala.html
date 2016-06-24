@@ -1,0 +1,11 @@
+@(data: List[models.Entry])
+
+@main("View entries") {
+    <div class="container">
+        <h2>Your entries:</h2>
+        @for(entry <- data) {
+            <h2>@entry.title</h2>
+            <p>@entry.text</p>
+        }
+    </div>
+}

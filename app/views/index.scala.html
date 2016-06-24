@@ -1,0 +1,34 @@
+@()
+
+@import fragments.thoughts
+
+@main("CSRF example app") {
+    <div class="container">
+        <h2>Instructions</h2>
+        <h3>Get started</h3>
+        <h4>Use the application</h4>
+        <h4>Create and delete some entries</h4>
+        <h3>Exploits</h3>
+        <h4>Create a link that deletes a record</h4>
+        <p>Can you email it to yourself?</p>
+        <p>Can you think of ways to make people more likely to click on that link?</p>
+        @thoughts {
+            <p>What does the user have to do to be vulnerable?</p>
+            <p>Why does this work?</p>
+        }
+        <h4>Create a page that can add a record</h4>
+        <h4>Have the page add a record with no user input</h4>
+        <h4>Write JavaScript that deletes all records</h4>
+        <hr />
+        <h3>Congratulations</h3>
+        <p>
+            You've successfully exploited a CSRF vulnerability on this website.
+            Now that you understand how they work, can you think of any other websites you use where this sort of
+            vulnerability would be a problem?
+        </p>
+        <p>
+            For more information on CSRF vulnerabilities, you can go on and do some
+            <a href="/further-reading">further reading</a> on this site.
+        </p>
+    </div>
+}
