@@ -4,6 +4,16 @@ body {
     flex-direction: column;
 }
 
+.navbar-fixed {
+    height: 34px;
+    line-height: 34px;
+}
+
+nav {
+    height: 34px;
+    line-height: 34px;
+}
+
 main {
     flex: 1 0 auto;
 }
