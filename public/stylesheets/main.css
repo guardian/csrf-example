@@ -4,7 +4,7 @@ body {
     flex-direction: column;
 }
 
-.navbar-fixed {
+.nav-container {
     height: 34px;
     line-height: 34px;
 }
@@ -12,6 +12,26 @@ body {
 nav {
     height: 34px;
     line-height: 34px;
+}
+
+@media only screen and (max-width: 600px) {
+    .nav-container {
+        height: 60px;
+        line-height: 30px;
+    }
+
+    nav {
+        height: 60px;
+        line-height: 30px;
+    }
+}
+
+nav ul a:hover {
+    color: #80cbc4;
+}
+
+.nav__el--divided {
+    border-right: solid 2px #004d40;
 }
 
 main {
