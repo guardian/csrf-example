@@ -1,0 +1,14 @@
+@(identityOpt: Option[String])
+
+@main("Account", identityOpt) {
+    <div class="container">
+        <h2>Account</h2>
+        @identityOpt.map { identity =>
+            <p>You are logged in as <b>@identity</b></p>
+            <p><a href="/logout">Log out</a></p>
+        }.getOrElse {
+            <p>You are not logged in.</p>
+            <p><a href="/login">Log in now</a></p>
+        }
+    </div>
+}

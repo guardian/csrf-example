@@ -17,15 +17,18 @@ object Data {
     }
   }
 
-  def addEntry(entry: Entry, request: RequestHeader): Cookie = {
-    val json = Json.toJson(request.entries :+ entry)
-    Cookie(dataCookieName, Json.stringify(json).base64Encode)
+  implicit class RichEntryList(data: List[Entry]) {
+    def asCookie = {
+      val json = Json.toJson(data)
+      Cookie(dataCookieName, Json.stringify(json).base64Encode)
+    }
   }
 
-  def removeEntry(index: Int, request: RequestHeader): Cookie = {
-    val data = request.entries
-    val newData = data.take(index) ++ data.take(index + 1)
-    val json = Json.toJson(newData)
-    Cookie(dataCookieName, Json.stringify(json).base64Encode)
+  def addEntry(entry: Entry, data: List[Entry]): List[Entry] = {
+    data :+ entry
+  }
+
+  def removeEntry(index: Int, data: List[Entry]): List[Entry] = {
+    data.take(index) ++ data.drop(index + 1)
   }
 }

@@ -21,6 +21,10 @@ object Auth {
     request.cookies.exists(_.name == loginCookieName)
   }
 
+  def identity(implicit request: RequestHeader): Option[String] = {
+    request.cookies.find(_.name == loginCookieName).map(_.value.base64Decode)
+  }
+
   def discardloginCookie: DiscardingCookie = {
     DiscardingCookie(loginCookieName)
   }

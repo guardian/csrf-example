@@ -1,6 +1,6 @@
 @(message: Option[String])
 
-@main("Add entry") {
+@main("Add entry", None) {
     <div class="container">
         <h2>Log in</h2>
         @message.map { messageText =>

@@ -1,6 +1,6 @@
-@()
+@(identity: Option[String])
 
-@main("Add entry") {
+@main("Add entry", identity) {
     <div class="container">
         <h2>Add entry</h2>
         <form method="post">

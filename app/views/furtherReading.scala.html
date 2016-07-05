@@ -1,9 +1,12 @@
-@()
+@(identity: Option[String])
 
-@main("Further reading") {
+@main("Further reading", identity) {
     <div class="container">
         <h2>Cross-Site Request Forgery</h2>
         <h3>Conditions</h3>
+        <p>
+            Can only perform actions that authenticated users are able to perform.
+        </p>
         <h4>Authenticated</h4>
         <h4>Side-effects on request</h4>
         <hr />

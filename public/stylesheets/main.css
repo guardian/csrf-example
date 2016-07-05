@@ -4,43 +4,11 @@ body {
     flex-direction: column;
 }
 
-.nav-container {
-    height: 34px;
-    line-height: 34px;
-}
-
-nav {
-    height: 34px;
-    line-height: 34px;
-}
-
-@media only screen and (max-width: 600px) {
-    .nav-container {
-        height: 60px;
-        line-height: 30px;
-    }
-
-    nav {
-        height: 60px;
-        line-height: 30px;
-    }
-}
-
-nav ul a:hover {
-    color: #80cbc4;
-}
-
-.nav__el--divided {
-    border-right: solid 2px #004d40;
-}
-
 main {
     flex: 1 0 auto;
 }
 
-.page-footer {
-    border-top: solid 10px #80cbc4;
-}
+/* Native styles */
 
 a {
     color: #00695c;
@@ -51,16 +19,69 @@ a:hover {
     color: #004d40;
 }
 
+/* Page chrome */
+
+.page-footer {
+    border-top: solid 10px #80cbc4;
+}
+
 #index-banner {
     border-bottom: solid 3px #004d40;
 }
 
-.thoughts__toggle {
-    padding: 10px;
-    border: solid 1px #00695c;
-    cursor: pointer;
+/* Page navigation */
+
+nav {
+    z-index: 1;
 }
 
-.thoughts__body {
+.nav-container {
+    height: 68px;
+}
+
+@media only screen and (max-width: 720px) {
+    nav .main-nav--item i {
+        display: none;
+    }
+}
+
+nav ul a:hover {
+    color: #fff;
+    background-color: #000;
+}
+
+.nav__el--divided {
+    border-right: solid 2px #004d40;
+}
+
+/* Utility classes */
+
+@media only screen and (max-width: 415px) {
+    .hide-on-tiny-only {
+        display: none;
+    }
+}
+
+/* Toggle component */
+
+.toggle__body {
     padding: 5px 15px;
+}
+
+/* exploit/hack page */
+
+textarea.textarea--code {
+    font-family: Courier, monospace;
+    background-color: #f7f7f7;
+    padding-left: 0.5rem;
+    padding-top: 1rem;
+    margin-top: 5px;
+}
+
+#hack-frame {
+    width: 100%;
+    margin-top: 10px;
+    border: solid 1px #bdbdbd;
+    transition: border-color 1000ms linear;
+    min-height: 400px;
 }

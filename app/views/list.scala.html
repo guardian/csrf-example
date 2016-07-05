@@ -1,11 +1,18 @@
-@(data: List[models.Entry])
+@(data: List[models.Entry], identity: Option[String])
 
-@main("View entries") {
+@main("View entries", identity) {
     <div class="container">
-        <h2>Your entries:</h2>
-        @for(entry <- data) {
-            <h2>@entry.title</h2>
+        <h2>Your entries</h2>
+        @for((entry, i) <- data.zipWithIndex) {
+            <h3>@entry.title</h3>
             <p>@entry.text</p>
+            <p><a href="/delete?index=@{i}">[ delete this entry ]</a></p>
+        }
+        @if(data.isEmpty) {
+            <p>
+                You haven't made any entries yet.
+                <a href="/add">Create one now?</a>
+            </p>
         }
     </div>
 }

@@ -1,8 +1,13 @@
 @(toggleText: String)(hintsBody: Html)
 
 <div class="toggle__container">
-    <div class="toggle__toggle">@toggleText <i class="material-icons">expand_more</i></div>
+    <p class="toggle__toggle">
+        <button class=" waves-effect waves-light btn">
+            @toggleText
+        </button>
+    </p>
     <div class="toggle__body teal lighten-4">
+        <h5>@toggleText</h5>
         @hintsBody
     </div>
 </div>

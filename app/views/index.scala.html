@@ -1,25 +1,108 @@
-@()
+@(identity: Option[String])
 
-@import fragments.thoughts
+@import fragments.toggle
 
-@main("CSRF example app") {
+@main("CSRF example app", identity) {
     <div class="container">
         <h2>Instructions</h2>
         <h3>Get started</h3>
-        <h4>Use the application</h4>
-        <h4>Create and delete some entries</h4>
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header"><i class="material-icons left">face</i>Use the application</div>
+                <div class="collapsible-body">
+                    <p>
+                        This is an example application that is vulnerable to CSRF attacks.
+                        To start off, have a browse round the site to get a feel for how it works.
+                        The navigation at the top of the page shows you what the application does.
+                        you can create "entries" and view a list of your own entries.
+                    </p>
+                    <p>
+                        Note that some pages will require a login.
+                        There's no real registration in this demo - any combination of username and password will work.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons left">assignment</i>Create and delete some entries</div>
+                <div class="collapsible-body">
+
+                </div>
+            </li>
+        </ul>
         <h3>Exploits</h3>
-        <h4>Create a link that deletes a record</h4>
-        <p>Can you email it to yourself?</p>
-        <p>Can you think of ways to make people more likely to click on that link?</p>
-        @thoughts {
-            <p>What does the user have to do to be vulnerable?</p>
-            <p>Why does this work?</p>
-        }
-        <h4>Create a page that can add a record</h4>
-        <h4>Have the page add a record with no user input</h4>
-        <h4>Write JavaScript that deletes all records</h4>
-        <hr />
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header"><i class="material-icons left">link</i>Crafting malicious links</div>
+                <div class="collapsible-body">
+                    <p>
+                        Can you create a link that will delete a record?
+                    </p>
+                    <p>
+                        Can you email it to yourself?
+                    </p>
+                    <p>
+                        Can you think of ways to make people more likely to click on that link?
+                    </p>
+                    @toggle("Extra questions") {
+                        <p>What does the user have to do to be vulnerable?</p>
+                        <p>Why does this work?</p>
+                    }
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons left">developer_mode</i>Creating a malicious web page</div>
+                <div class="collapsible-body">
+                    <p>
+                        Is it possible to make a webpage that will create a record on behalf of the user?
+                    </p>
+                    @toggle("Hint") {
+                        <p>
+                            You create a record by submitting the form on this website.
+                            Can you try putting a form on your own webpage instead?
+                        </p>
+                    }
+                    <p>
+                        How might you trick the user into submitting your form?
+                    </p>
+                    <p>
+                        Can you work out a way to submit the form without any user interaction?
+                    </p>
+                    @toggle("Hint") {
+                        <p>
+                            Clicking submit isn't the only way to submit a form!
+                            Is there a way to trigger a form submission from JavaScript?
+                        </p>
+                    }
+                    <p>
+                        Can you make the form submit automatically without changing the current page?
+                        This means the user will be completely unaware that you've managed to create entries on their behalf.
+                    </p>
+                    @toggle("Hint") {
+                        <p>
+                            Submitting a form will cause the containing page to update.
+                            Could you embed a different web page within this one?
+                        </p>
+                    }
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons left">do_not_disturb_on</i>Stealth-mode</div>
+                <div class="collapsible-body">
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons left">build</i>Combining it all</div>
+                <div class="collapsible-body">
+                    <!--
+                        Script:
+                        fetch all a user's entries, send them to another application
+                        delete all their entries when that's done
+                        add lots of your own entries to their account
+                    -->
+                </div>
+            </li>
+        </ul>
+
         <h3>Congratulations</h3>
         <p>
             You've successfully exploited a CSRF vulnerability on this website.

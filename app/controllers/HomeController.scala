@@ -6,24 +6,28 @@ import logic.Auth
 import models.Entry
 import play.api.mvc._
 import logic.Data
-import logic.Data.RichRequest
+import logic.Data.{RichRequest, RichEntryList}
 
 @Singleton
 class HomeController @Inject() extends Controller {
 
-  def index = Action {
-    Ok(views.html.index())
+  def index = Action { implicit request =>
+    Ok(views.html.index(Auth.identity))
+  }
+
+  def hack = Action { implicit request =>
+    Ok(views.html.hack(Auth.identity))
   }
 
   def list = Action { implicit request =>
     ifLoggedIn { data =>
-      Ok(views.html.list(data))
+      Ok(views.html.list(data, Auth.identity))
     }
   }
 
   def add = Action { implicit request =>
     ifLoggedIn { _ =>
-      Ok(views.html.add())
+      Ok(views.html.add(Auth.identity))
     }
   }
 
@@ -31,19 +35,24 @@ class HomeController @Inject() extends Controller {
     ifLoggedIn { data =>
       val title = request.body.asFormUrlEncoded.get("title").head
       val text = request.body.asFormUrlEncoded.get("text").head
-      val newCookie = Data.addEntry(Entry(title, text), request)
+      val newCookie = Data.addEntry(Entry(title, text), request.entries).asCookie
       SeeOther("/list").withCookies(newCookie)
     }
   }
 
   def delete(index: Int) = Action { implicit request =>
     ifLoggedIn { data =>
-      SeeOther("/list").withCookies(Data.removeEntry(index, request))
+      val cookie = Data.removeEntry(index, request.entries).asCookie
+      SeeOther("/list").withCookies(cookie)
     }
   }
 
-  def furtherReading = Action {
-    Ok(views.html.furtherReading())
+  def furtherReading = Action { implicit request =>
+    Ok(views.html.furtherReading(Auth.identity))
+  }
+
+  def account = Action { implicit request =>
+    Ok(views.html.account(Auth.identity))
   }
 
   def login = Action { implicit request =>

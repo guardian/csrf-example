@@ -4,12 +4,14 @@
 
 GET     /                           controllers.HomeController.index
 GET     /further-reading            controllers.HomeController.furtherReading
+GET     /hack                       controllers.HomeController.hack
 
 GET     /list                       controllers.HomeController.list
 GET     /add                        controllers.HomeController.add
 POST    /add                        controllers.HomeController.handleAdd
 GET     /delete                     controllers.HomeController.delete(index: Int)
 
+GET     /account                    controllers.HomeController.account
 GET     /login                      controllers.HomeController.login
 POST    /login                      controllers.HomeController.handleLogin
 GET     /logout                     controllers.HomeController.logout

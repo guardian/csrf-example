@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String, identity: Option[String])(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,23 +24,49 @@
             <nav class="grey darken-4 z-depth-1">
                 <div class="container">
                     <div class="nav-wrapper">
-                        <ul id="nav-mobile" class="left hide-on-small-only">
-                            <li class="nav__el--divided"><a href="/">Instructions</a></li>
-                            <li><a href="/list">Show entries</a></li>
-                            <li class="nav__el--divided"><a href="/add">Add entry</a></li>
+                        <ul class="main-nav left">
+                            <li class="main-nav--home">
+                                <a href="/"><i class="material-icons">home</i></a>
+                            </li>
+                            <li class="main-nav--item">
+                                <a href="/list">
+                                    <span class="hide-on-small-only">
+                                        <i class="material-icons left">view_list</i>
+                                        Show entries
+                                    </span>
+                                    <span class="hide-on-med-and-up">
+                                        Entries
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="main-nav--item">
+                                <a href="/add">
+                                    <span class="hide-on-small-only">
+                                        <i class="material-icons left">library_add</i>
+                                        Add an entry
+                                    </span>
+                                    <span class="hide-on-med-and-up">
+                                        Add <span class="hide-on-tiny-only">entry</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="main-nav--item">
+                                <a href="/hack">
+                                    <i class="material-icons left">developer_mode</i>
+                                    Hack
+                                </a>
+                            </li>
                         </ul>
-                        <ul id="nav-mobile" class="right hide-on-small-only">
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/logout">Logout</a></li>
+                        <ul class="account-nav right">
+                            <li class="account-nav--item">
+                                <a href="/account">
+                                    <i class="material-icons right">account_box</i>
+                                    <span class="hide-on-small-only">
+                                        Account
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
-                        <div class="hide-on-med-and-up">
-                            <a href="/">Instructions</a> |
-                            <a href="/list">Show entries</a> |
-                            <a href="/add">Add entry</a>
-                            <br />
-                            <a href="/login">Login</a> |
-                            <a href="/logout">Logout</a>
-                        </div>
                     </div>
                 </div>
             </nav>

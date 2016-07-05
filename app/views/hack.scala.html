@@ -1,0 +1,58 @@
+@(identity: Option[String])
+
+@main("CSRF example app", identity) {
+    <div class="container">
+        <h2>Hack</h2>
+
+        <p>
+            For convenience, this makes it easy for you to create a web page to exploit the vulnerabilities.
+            Your changes will be saved every time you update the page.
+        </p>
+
+        <form class="hack-form">
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <textarea id="hack-frame-content" class="textarea--code materialize-textarea" spellcheck="false">@Html(
+                      """<html>
+                        |<head>
+                        |  <title>Example exploit</title>
+                        |  <style>
+                        |    html {
+                        |      margin: auto;
+                        |      padding: 0 10px;
+                        |    }
+                        |  </style>
+                        |</head>
+                        |<body>
+                        |  <h1>Example exploit</h1>
+                        |  <p>Your content goes here. <a href="/list" target="parent">Here is a link</a></p>
+                        |</body>
+                        |</html>""".stripMargin)</textarea>
+                    <label for="hack-frame-content">Exploit page contents</label>
+                </div>
+                <div class="input-field col m6 s12">
+                    <textarea id="hack-frame-js" class="textarea--code materialize-textarea" spellcheck="false">@Html(
+                      """// your Javascript goes here
+                        |""".stripMargin)</textarea>
+                    <label for="hack-frame-content">Exploit page JavaScript source</label>
+                </div>
+            </div>
+            <p>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Update page
+                    <i class="material-icons right">send</i>
+                </button>
+            </p>
+        </form>
+
+        <iframe id="hack-frame">
+            <html>
+                <head>
+                    <script src="https://code.jquery.com/jquery-3.0.0.slim.min.js"></script>
+                </head>
+                <body>
+                    <p>Restoring saved content...</p>
+                </body>
+            </html>
+        </iframe>
+    </div>
+}
