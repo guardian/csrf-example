@@ -85,3 +85,7 @@ textarea.textarea--code {
     transition: border-color 1000ms linear;
     min-height: 400px;
 }
+
+.instructions .collapsible-body p {
+    padding: 0.6rem 2rem;
+}

@@ -5,8 +5,24 @@
 @main("CSRF example app", identity) {
     <div class="container">
         <h2>Instructions</h2>
-        <h3>Get started</h3>
-        <ul class="collapsible" data-collapsible="accordion">
+        <p>
+            <b>CSRF is an attack that tricks the victim into submitting a malicious request</b>.
+            It inherits the identity and privileges of the victim to perform an undesired function on the victim's behalf.
+            For most sites, browser requests automatically include any credentials associated with the site,
+            such as the user's session cookie, IP address, Windows domain credentials, and so forth.
+            Therefore, if the user is currently authenticated (logged-in),
+            the application will have no way to distinguish between the forged request sent by the victim and a legitimate request sent by the victim.
+        </p>
+        <p>
+            CSRF attacks target functionality that causes a state change on the server,
+            such as changing the victim's email address or password, or purchasing something.
+            Forcing the victim to retrieve data doesn't benefit an attacker because the attacker
+            doesn't receive the response, the victim does.
+            As such, <b>CSRF attacks target state-changing requests</b>.
+        </p>
+
+        <h3>Getting started</h3>
+        <ul class="collapsible instructions" data-collapsible="accordion">
             <li>
                 <div class="collapsible-header"><i class="material-icons left">face</i>Use the application</div>
                 <div class="collapsible-body">
@@ -14,23 +30,54 @@
                         This is an example application that is vulnerable to CSRF attacks.
                         To start off, have a browse round the site to get a feel for how it works.
                         The navigation at the top of the page shows you what the application does.
-                        you can create "entries" and view a list of your own entries.
                     </p>
                     <p>
                         Note that some pages will require a login.
-                        There's no real registration in this demo - any combination of username and password will work.
+                        For simplicity's sake there's no real registration in this demo,
+                        any combination of username and password will work.
                     </p>
                 </div>
             </li>
             <li>
                 <div class="collapsible-header"><i class="material-icons left">assignment</i>Create and delete some entries</div>
                 <div class="collapsible-body">
-
+                    <p>
+                        This is a demo application that allows users to create "entries",
+                        which are simple notes with a title and description.
+                        Users can create new "entries" and view a list of their own existing entries.
+                        They can also delete existing entries from the list page.
+                    </p>
+                    <p>
+                        Try creating and deleting some records.
+                        Pay attention to how the application works.
+                        Can you spot any vulnerabilities?
+                    </p>
                 </div>
             </li>
         </ul>
-        <h3>Exploits</h3>
-        <ul class="collapsible" data-collapsible="accordion">
+
+        <h3>Exercises</h3>
+        <ul class="collapsible instructions" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header"><i class="material-icons left">help</i>CSRF</div>
+                <div class="collapsible-body">
+                    <p>
+                        <b>CSRF is an attack that tricks the victim into submitting a malicious request</b>.
+                        It inherits the identity and privileges of the victim to perform an undesired function on the victim's behalf.
+                        For most sites, browser requests automatically include any credentials associated with the site,
+                        such as the user's session cookie, IP address, Windows domain credentials, and so forth.
+                        Therefore, if the user is currently authenticated to the site,
+                        the site will have no way to distinguish between the forged request sent by the victim and a legitimate request sent by the victim.
+                    </p>
+                    <p>
+                        CSRF attacks target functionality that causes a state change on the server,
+                        such as changing the victim's email address or password, or purchasing something.
+                        Forcing the victim to retrieve data doesn't benefit an attacker because the attacker
+                        doesn't receive the response, the victim does.
+                        As such, <b>CSRF attacks target state-changing requests</b>.
+                    </p>
+                </div>
+            </li>
             <li>
                 <div class="collapsible-header"><i class="material-icons left">link</i>Crafting malicious links</div>
                 <div class="collapsible-body">
@@ -103,10 +150,15 @@
             </li>
         </ul>
 
+        <h3>Mitigation</h3>
+        <p>
+
+        </p>
+
         <h3>Congratulations</h3>
         <p>
             You've successfully exploited a CSRF vulnerability on this website.
-            Now that you understand how they work, can you think of any other websites you use where this sort of
+            Now that you understand how they work, can you think of any websites you use where this sort of
             vulnerability would be a problem?
         </p>
         <p>

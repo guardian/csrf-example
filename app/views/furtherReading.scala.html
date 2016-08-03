@@ -3,14 +3,74 @@
 @main("Further reading", identity) {
     <div class="container">
         <h2>Cross-Site Request Forgery</h2>
+
         <h3>Conditions</h3>
         <p>
             Can only perform actions that authenticated users are able to perform.
         </p>
         <h4>Authenticated</h4>
         <h4>Side-effects on request</h4>
-        <hr />
-        <h2>Further reading</h2>
+
+        <h2>Mitigation</h2>
+        <ul class="collapsible instructions" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header"><i class="material-icons left">open_in_browser</i> Avoid side-effects in GET requests</div>
+                <div class="collapsible-body">
+                    <p>
+                        CSRF vulnerabilities are much simpler to exploit when they work off GET requests.
+                    </p>
+                    <p>
+                        It's worth noting that this behaviour is described
+                        <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.1.1">in the HTTP specification</a>.
+                        As well as helping to secure your application, you'll also be conforming to best practices about
+                        HTTP verb usage.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons left">vpn_key</i> Use CSRF tokens for effectful HTTP requests</div>
+                <div class="collapsible-body">
+                    <p>
+                        When performing HTTP POSTs (or DELETE, PUT, PATCH etc) that have a side effect, you should
+                        include a secure random token in the request (Synchronizer Token pattern).
+                        Most web frameworks provide a way to include CSRF tokens out-the-box, you should use these where possible.
+                    </p>
+                    <p>
+                        <b>Note:</b> Even if you have some POST/(etc) requests that do not have side-effects it's safer to enable
+                        CSRF protection by default for all such requests.
+                        This makes it much less likely you'll forget to include the checks on requests that can be exploited.
+                    </p>
+                    <p>
+                        <b>Note:</b> this approach works best for requests that have a body.
+                        If you add tokens to GET or HEAD requests they will appear in the URL.
+                        As well as being plainly visible, these are liable to be leaked to proxies, browser caches etc.
+                        This is another reason why it's better to restrict side effects to other HTTP methods.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons left">search</i> Origin / Referer header checks</div>
+                <div class="collapsible-body">
+                    <p>
+                        The Origin header was specifically added to the HTTP spec to guard against cross domain attacks.
+                        Unfortunately, the header won't always be available so it can't be used as the only of securing your site.
+                        By verifying that the Origin matches the site's origin you can be sure the request originated
+                        from a genuine user interaction with your application.
+                    </p>
+                    <p>
+                        The Referer header may also exist on the request. Similarly, verifying that the referer matches
+                        the application helps to ensure it is a legitimate request.
+                    </p>
+                    <p>
+                        In both cases, while it is possible to spoof these headers it isn't possible to do so from a
+                        CSRF-style attack unless your site is compromised in another way
+                        (e.g. a Cross Site Scripting vulnerability).
+                    </p>
+                </div>
+            </li>
+        </ul>
+
+        <h2>Additional resources</h2>
         <ul>
             <li><a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">OWASP</a></li>
             <li><a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Wikipedia</a></li>
