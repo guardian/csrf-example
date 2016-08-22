@@ -99,6 +99,14 @@
                         in this demo application. You can either make your own webpage locally, or use the `Hack`
                         link in the main navigation to build a webpage there.
                     </p>
+                    @toggle("Note on `Hack` link") {
+                        <p>
+                            <b>Note:</b> If you use the `Hack` feature on this site bear in mind that a CSRF attack
+                            would occur from another website. This means the browser's cross-origin policy will be
+                            in effect, and as such Ajax post requests (e.g. <code>$.ajax</code>, <code>$.post</code>)
+                            will not be allowed. You'll have to find another way!
+                        </p>
+                    }
                     <p>
                         When you've created your page, use the URL you discovered above to create a link that
                         will delete a user's entry. Try to design the page to make it likely that a user will
