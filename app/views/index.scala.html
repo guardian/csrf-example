@@ -9,9 +9,10 @@
             <b>CSRF is an attack that tricks the victim into submitting a malicious request</b>.
             It inherits the identity and privileges of the victim to perform an undesired function on the victim's behalf.
             For most sites, browser requests automatically include any credentials associated with the site,
-            such as the user's session cookie, IP address, Windows domain credentials, and so forth.
+            such as the user's session cookie, IP address, and so forth.
             Therefore, if the user is currently authenticated (logged-in),
-            the application will have no way to distinguish between the forged request sent by the victim and a legitimate request sent by the victim.
+            the application will have no way to distinguish between the forged request sent by
+            the victim's browser and a legitimate request sent by the victim.
         </p>
         <p>
             CSRF attacks target functionality that causes a state change on the server,
@@ -24,7 +25,9 @@
         <h3>Getting started</h3>
         <ul class="collapsible instructions" data-collapsible="accordion">
             <li>
-                <div class="collapsible-header"><i class="material-icons left">face</i>Use the application</div>
+                <div class="collapsible-header">
+                    <i class="material-icons left">face</i>Use the application
+                </div>
                 <div class="collapsible-body">
                     <p>
                         This is an example application that is vulnerable to CSRF attacks.
@@ -33,24 +36,30 @@
                     </p>
                     <p>
                         Note that some pages will require a login.
-                        For simplicity's sake there's no real registration in this demo,
-                        any combination of username and password will work.
+                        For simplicity's sake the registration in this demo is only an example,
+                        entering any password will work with 'demo' as the username.
                     </p>
                 </div>
             </li>
             <li>
-                <div class="collapsible-header"><i class="material-icons left">assignment</i>Create and delete some entries</div>
+                <div class="collapsible-header">
+                    <i class="material-icons left">assignment</i>Create and delete some entries
+                </div>
                 <div class="collapsible-body">
                     <p>
                         This is a demo application that allows users to create "entries",
                         which are simple notes with a title and description.
-                        Users can create new "entries" and view a list of their own existing entries.
+                        Users can create new entries and view a list of their own existing entries.
                         They can also delete existing entries from the list page.
                     </p>
                     <p>
-                        Try creating and deleting some records.
-                        Pay attention to how the application works.
-                        Can you spot any vulnerabilities?
+                        You can create entries using the `Add an entry` link in the main navigation.
+                        Entries are created for yourself and only visible to you when you are logged
+                        in. View your entries using the Show entries link above.
+                    </p>
+                    <p>
+                        Try creating and deleting some entries. Pay attention to how the application works.
+                        Can you think of any vulnerabilities?
                     </p>
                 </div>
             </li>
@@ -59,70 +68,72 @@
         <h3>Exercises</h3>
         <ul class="collapsible instructions" data-collapsible="accordion">
             <li>
-                <div class="collapsible-header"><i class="material-icons left">help</i>CSRF</div>
-                <div class="collapsible-body">
-                    <p>
-                        <b>CSRF is an attack that tricks the victim into submitting a malicious request</b>.
-                        It inherits the identity and privileges of the victim to perform an undesired function on the victim's behalf.
-                        For most sites, browser requests automatically include any credentials associated with the site,
-                        such as the user's session cookie, IP address, Windows domain credentials, and so forth.
-                        Therefore, if the user is currently authenticated to the site,
-                        the site will have no way to distinguish between the forged request sent by the victim and a legitimate request sent by the victim.
-                    </p>
-                    <p>
-                        CSRF attacks target functionality that causes a state change on the server,
-                        such as changing the victim's email address or password, or purchasing something.
-                        Forcing the victim to retrieve data doesn't benefit an attacker because the attacker
-                        doesn't receive the response, the victim does.
-                        As such, <b>CSRF attacks target state-changing requests</b>.
-                    </p>
+                <div class="collapsible-header">
+                    <i class="material-icons left">link</i>Crafting malicious links
                 </div>
-            </li>
-            <li>
-                <div class="collapsible-header"><i class="material-icons left">link</i>Crafting malicious links</div>
                 <div class="collapsible-body">
                     <p>
-                        Can you create a link that will delete a record?
+                        Can you create a URL that will delete one of your entries?
+                        What happens when you follow that link? Try logging out and seeing what it does then.
                     </p>
                     <p>
-                        Can you email it to yourself?
-                    </p>
-                    <p>
-                        Can you think of ways to make people more likely to click on that link?
+                        How might you share that link so people click it? Can you think of ways to make people
+                        more likely to click on the link when they see it?
                     </p>
                     @toggle("Extra questions") {
-                        <p>What does the user have to do to be vulnerable?</p>
-                        <p>Why does this work?</p>
+                        <p>What does the user have to do to be vulnerable to this attack?</p>
+                        <p>Why does it work?</p>
                     }
+                    <p>
+                        Can you create a URL that will <em>create</em> an entry? Describe what you discover.
+                    </p>
                 </div>
             </li>
             <li>
-                <div class="collapsible-header"><i class="material-icons left">developer_mode</i>Creating a malicious web page</div>
+                <div class="collapsible-header">
+                    <i class="material-icons left">developer_mode</i>Creating a malicious web page
+                </div>
                 <div class="collapsible-body">
                     <p>
-                        Is it possible to make a webpage that will create a record on behalf of the user?
+                        Now we're going to try to build a malicious webpage that exploits the CSRF vulnerability
+                        in this demo application. You can either make your own webpage locally, or use the `Hack`
+                        link in the main navigation to build a webpage there.
+                    </p>
+                    <p>
+                        When you've created your page, use the URL you discovered above to create a link that
+                        will delete a user's entry. Try to design the page to make it likely that a user will
+                        click your link.
+                    </p>
+                    <p>
+                        You discovered earlier that it isn't possible to make a URL that will <em>create</em>
+                        an entry. Can you think of a way that this webpage could be made to create entries on
+                        behalf on the user.
                     </p>
                     @toggle("Hint") {
                         <p>
-                            You create a record by submitting the form on this website.
+                            You create an entry by submitting the form on this website.
                             Can you try putting a form on your own webpage instead?
                         </p>
                     }
                     <p>
-                        How might you trick the user into submitting your form?
-                    </p>
-                    <p>
-                        Can you work out a way to submit the form without any user interaction?
+                        How can you make it more likely a user will interact with your exploit?
                     </p>
                     @toggle("Hint") {
                         <p>
-                            Clicking submit isn't the only way to submit a form!
-                            Is there a way to trigger a form submission from JavaScript?
+                            Forms can contain "hidden" inputs using an input with <code>type="hidden"</code>.
                         </p>
                     }
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons left">do_not_disturb_on</i>Stealth-mode
+                </div>
+                <div class="collapsible-body">
                     <p>
-                        Can you make the form submit automatically without changing the current page?
-                        This means the user will be completely unaware that you've managed to create entries on their behalf.
+                        In the last section you created a form that can create entries, but a savvy user might
+                        choose not to interact with a suspicious looking webpage. Can you make the form
+                        submit automatically without changing the current page?
                     </p>
                     @toggle("Hint") {
                         <p>
@@ -130,16 +141,39 @@
                             Could you embed a different web page within this one?
                         </p>
                     }
+                    <p>What does the user see now when they visit your malicious webpage?</p>
                 </div>
             </li>
             <li>
-                <div class="collapsible-header"><i class="material-icons left">do_not_disturb_on</i>Stealth-mode</div>
-                <div class="collapsible-body">
+                <div class="collapsible-header">
+                    <i class="material-icons left">build</i>Combining it all
                 </div>
-            </li>
-            <li>
-                <div class="collapsible-header"><i class="material-icons left">build</i>Combining it all</div>
                 <div class="collapsible-body">
+                    <p>
+                        Now it's time to combine everything you've learnt into a nasty attack.
+                    </p>
+                    <p>
+                        Try writing a script that will silently delete one of the current user's entries
+                        when they visit your webpage.
+                    </p>
+                    @toggle("Hint") {
+                        <p>
+                            You already know how to make a URL that deletes an entry. How could you get a script to
+                            load that URL?
+                        </p>
+                    }
+                    <p>
+                        Can you change this script so it deletes <b>all</b> a user's entries?
+                    </p>
+                    <p>
+                        Combine this script with one that adds a few entries of your own devising.
+                    </p>
+                    @toggle("Hint") {
+                        <p>
+                            In the last section you worked out how to add entries silently.
+                            Can you do this multiple times?
+                        </p>
+                    }
                     <!--
                         Script:
                         fetch all a user's entries, send them to another application
@@ -150,11 +184,6 @@
             </li>
         </ul>
 
-        <h3>Mitigation</h3>
-        <p>
-
-        </p>
-
         <h3>Congratulations</h3>
         <p>
             You've successfully exploited a CSRF vulnerability on this website.
@@ -162,8 +191,11 @@
             vulnerability would be a problem?
         </p>
         <p>
-            For more information on CSRF vulnerabilities, you can go on and do some
-            <a href="/further-reading">further reading</a> on this site.
+            For more information on CSRF vulnerabilities and how to help prevent them in your applications,
+            go on to the <a href="/further-reading">further reading</a> section of this site.
+        </p>
+        <p>
+            <a href="/further-reading" class="waves-effect waves-light btn-large">Further reading &amp; mitigation</a>
         </p>
     </div>
 }

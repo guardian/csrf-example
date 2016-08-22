@@ -4,13 +4,19 @@
     <div class="container">
         <h2>Log in</h2>
         @message.map { messageText =>
-            <p>@messageText</p>
+            <div class="card-panel teal lighten-5">
+                <p>@messageText</p>
+            </div>
         }
+        <p>
+            The authentication system in this application is faked for demo purposes.
+            The username is <b>demo</b> and any password will work.
+        </p>
         <form method="post">
             <div class="row">
                 <div class="input-field col s12">
                     <input name="username" id="add-username" type="text" />
-                    <label for="add-username">Username</label>
+                    <label for="add-username">Username (demo)</label>
                 </div>
                 <div class="input-field col s12">
                     <input name="password" id="add-password" type="password" />

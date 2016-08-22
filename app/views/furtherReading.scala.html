@@ -4,15 +4,55 @@
     <div class="container">
         <h2>Cross-Site Request Forgery</h2>
 
+        <p>
+            Now that you've experimented with CSRF attacks you should have some idea what is possible.
+            Now it's time to learn the limitations of CSRF attacks and how to prevent them in your applications.
+        </p>
+
         <h3>Conditions</h3>
         <p>
-            Can only perform actions that authenticated users are able to perform.
+            CSRF attacks force a browser to perform actions on the user's behalf.
+            This means there are some limitations on what this kind of attack can do.
         </p>
-        <h4>Authenticated</h4>
-        <h4>Side-effects on request</h4>
 
-        <h2>Mitigation</h2>
-        <ul class="collapsible instructions" data-collapsible="accordion">
+        <ul class="collapsible instructions" data-collapsible="expandable">
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons left">vpn_key</i>
+                    Side-effects on requests
+                </div>
+                <div class="collapsible-body">
+                    <p>
+                        CSRF attacks target state-changing requests. This means they can only target endpoints
+                        that make some kind of change, such as changing the victim's email address or password,
+                        or purchasing something.
+                    </p>
+                    <p>
+                        The attacker does not recieve the response because it gets sent by the victim's browser.
+                        This means CSRF attacks cannot be used to retrieve information.
+                        In the example you worked through in this application you learnt how to add and delete
+                        entries, but it was not possible to read a user's existing entries.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons left">open_in_browser</i>
+                    Authentication
+                </div>
+                <div class="collapsible-body">
+                    <p>
+                        CSRF attack requests have the same authentication as the victim, because they are sent
+                        by that person's web browser.
+                        This means endpoints are only vulnerable if they do not require any authentication, or
+                        the victom is logged in and has access to perform the action.
+                    </p>
+                </div>
+            </li>
+        </ul>
+
+        <h3>Mitigation</h3>
+        <ul class="collapsible instructions" data-collapsible="expandable">
             <li>
                 <div class="collapsible-header"><i class="material-icons left">open_in_browser</i> Avoid side-effects in GET requests</div>
                 <div class="collapsible-body">
@@ -22,7 +62,7 @@
                     <p>
                         It's worth noting that this behaviour is described
                         <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.1.1">in the HTTP specification</a>.
-                        As well as helping to secure your application, you'll also be conforming to best practices about
+                        As well as helping to secure your application, you'll be conforming to best practices about
                         HTTP verb usage.
                     </p>
                 </div>
@@ -70,10 +110,34 @@
             </li>
         </ul>
 
-        <h2>Additional resources</h2>
-        <ul>
-            <li><a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">OWASP</a></li>
-            <li><a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Wikipedia</a></li>
-        </ul>
+        <h3>Additional resources</h3>
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">
+                            <img src="/assets/images/OWASP.jpg">
+                            <span class="card-title">OWASP</span>
+                        </a>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF attacks on the OWASP site</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">
+                            <img src="/assets/images/wikipedia.jpg">
+                            <span class="card-title">OWASP</span>
+                        </a>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF on Wikipedia</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }

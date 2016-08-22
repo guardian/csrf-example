@@ -61,8 +61,13 @@ class HomeController @Inject() extends Controller {
 
   def handleLogin = Action { implicit request =>
     val username = request.body.asFormUrlEncoded.get("username").head
-    val loginCookie = Auth.loginCookie(username, "")
-    SeeOther("/").withCookies(loginCookie)
+    if ("demo" == username) {
+      val loginCookie = Auth.loginCookie(username, "")
+      SeeOther("/").withCookies(loginCookie)
+    } else {
+      SeeOther("/login")
+        .flashing("message" -> "Incorrect username and password (use demo as the username)")
+    }
   }
 
   def logout = Action { implicit request =>
