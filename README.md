@@ -11,5 +11,5 @@ CSRF attacks and mitigation.
 ## Usage
 
 This is a [Play](https://www.playframework.com/) app so you can run it
-using `sbt run`. You will then find it by
-[browsing to it locally](http://localhost:9000/)
+using `sbt run`. You can then
+[browse to it locally at http://localhost:9000/](http://localhost:9000/)
